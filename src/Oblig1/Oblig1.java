@@ -36,11 +36,12 @@ public class Oblig1 {
         for (int i = 0; i< a.length-1; i++) {  //Bruker bobblestortering til å sammenlikne to og to tall ved siden av hverandre
 
             if (a[i] > a[i+1]) {
-                bytt(a,a[i],a[i+1]);
-                max = a [i+1];
+                int temp = a[i];
+                a[i] = a[i+1];
+                a[i+1] = temp;
             }
         }
-        return max;
+        return a[a.length-1];
     }
 
     public static int ombyttinger (int [] a){
@@ -49,27 +50,23 @@ public class Oblig1 {
         }
 
         int teller = 0; //instansierer telleren
-
-        int max = a[0]; // Initierer variabel med størst verdi
-
         for (int i = 0; i< a.length-1; i++) {  //Bruker bobblestortering til å sammenlikne to og to tall ved siden av hverandre
-
             if (a[i] > a[i+1]) {
-                bytt(a,a[i],a[i+1]);
+                int temp = a[i];
+                a[i] = a[i+1];
+                a[i+1] = temp;
                 teller++;
-                max = a [i+1];
-            }
-            else {
-                max = a[i+1];
-            }
         }
+    }
         return teller;
     }
 
 
     public static void main(String[] args) {
        int [] a=  randPermBoolean(10);
-       maks(a);
+        System.out.println(maks(a));
+        int [] b=randPermBoolean(5);
+        System.out.println(ombyttinger(b));
        
 
 

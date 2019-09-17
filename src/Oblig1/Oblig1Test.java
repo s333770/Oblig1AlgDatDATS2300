@@ -83,13 +83,15 @@ class Oblig1Test {
          assertEquals(oppgave8[0],3);
     }
 
-    /*@org.junit.jupiter.api.Test
+    @org.junit.jupiter.api.Test
     void tredjeMin() {
-        int[] oppgave9={3,1,5,5,3,7,6,9,10};
-        Oblig1.tredjeMin(oppgave9);
-        assertEquals(oppgave9[0],);
+        int[] oppgave9={3,1,5,5,7,6,9,10};
+        int []ut=Oblig1.tredjeMin(oppgave9);
+        assertEquals(1,ut[0]);
+        assertEquals(3,ut[1]);
+        assertEquals(5,ut[2]);
 
-    }*/
+    }
 
     @org.junit.jupiter.api.Test
     void inneholdt() {
@@ -99,7 +101,5 @@ class Oblig1Test {
      assertEquals(true, Oblig1.inneholdt(s1,s2));
     }
 
-    @org.junit.jupiter.api.Test
-    void main() {
-    }
+
 }

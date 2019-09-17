@@ -267,59 +267,66 @@ public class Oblig1 {
     }
 
     //Oppgave9
-    public static int[] tredjeMin(int[] a) // ny versjon
+    public static int[] tredjeMin(int[] a) // ny versjon  {3,1,5,5,3,7,6,9,10};
     {
-        int maksverdi=0;
-        int nestMaksverdi=0;
-        int tredjeMaksverdi=0;
+        int minverdi=Integer.MAX_VALUE;
+        int nestMinverdi=Integer.MAX_VALUE;
+        int tredjeMinverdi=Integer.MAX_VALUE;
         int[] returTabell = new int[3];
         if (a.length < 3) {
             throw new IndexOutOfBoundsException("For liten array");
         }
-        if(a[2]>a[1] && a[2]>a[0]&&a[1]>a[0]){ //a2 a1 a0
-            maksverdi=a[2];
-            nestMaksverdi=a[1];
-            tredjeMaksverdi=a[0];
+        if(a[2]<a[1] && a[2]<a[0]&&a[1]<a[0]){ //a2 a1 a0
+            minverdi=a[2];
+            nestMinverdi=a[1];
+            tredjeMinverdi=a[0];
         }
-        else if(a[2]>a[1]&&a[2]>a[0]&&a[1]<a[0]){ //a2 a0 a1
-            maksverdi=a[2];
-            nestMaksverdi=a[0];
-            tredjeMaksverdi=a[1];
+        else if(a[2]<a[1]&&a[2]<a[0]&&a[1]>a[0]){ //a2 a0 a1
+            minverdi=a[2];
+            nestMinverdi=a[0];
+            tredjeMinverdi=a[1];
         }
-        else if(a[2]<a[1] && a[1]>a[0] && a[2]>a[0]){ // a1 a2 a0
-            maksverdi=a[1];
-            nestMaksverdi=a[2];
-            tredjeMaksverdi=a[0];
+        else if(a[2]>a[1] && a[1]<a[0] && a[2]<a[0]){ // a1 a2 a0
+            minverdi=a[1];
+            nestMinverdi=a[2];
+            tredjeMinverdi=a[0];
 
         }
-        else if(a[2]<a[1] && a[1]>a[0] && a[0]>a[2]){ //a1 a0 a2
-            maksverdi=a[1];
-            nestMaksverdi=a[0];
-            tredjeMaksverdi=a[2];
+        else if(a[2]>a[1] && a[1]<a[0] && a[0]<a[2]){ //a1 a0 a2
+            minverdi=a[1];
+            nestMinverdi=a[0];
+            tredjeMinverdi=a[2];
         }
-        else if(a[2]<a[1] && a[1]<a[0] && a[0]>a[2]){ //a0 a1 a2
-            maksverdi=a[0];
-            nestMaksverdi=a[1];
-            tredjeMaksverdi=a[2];
+        else if(a[2]>a[1] && a[1]>a[0] && a[0]<a[2]){ //a0 a1 a2
+            minverdi=a[0];
+            nestMinverdi=a[1];
+            tredjeMinverdi=a[2];
         }
-        else if(a[2]>a[1] && a[1]<a[0] && a[0]>a[2]){ //a0 a2 a1
-            maksverdi=a[0];
-            nestMaksverdi=a[2];
-            tredjeMaksverdi=a[1];
+        else if(a[2]<a[1] && a[1]>a[0] && a[0]<a[2]){ //a0 a2 a1
+            minverdi=a[0];
+            nestMinverdi=a[2];
+            tredjeMinverdi=a[1];
         }
+        System.out.println(Arrays.toString(returTabell));
         for(int i=3; i<a.length;i++){
-            if(a[i]>tredjeMaksverdi){
-                if(a[i]>nestMaksverdi){
-                    if(a[i]>maksverdi){
-                        tredjeMaksverdi=nestMaksverdi;
-                        nestMaksverdi=maksverdi;
-                        maksverdi=a[i];
+            if(a[i]<tredjeMinverdi){
+                if(a[i]<nestMinverdi){
+                    if(a[i]<minverdi){
+                        tredjeMinverdi=nestMinverdi;
+                        nestMinverdi=minverdi;
+                        minverdi=a[i];
                     }
+
                 }
+
             }
+
         }
-        System.out.println("Største tall "+maksverdi+" Nest største "+nestMaksverdi+" TredjeStørst "+tredjeMaksverdi);
-        return a;
+        returTabell[0]=minverdi;
+        returTabell[1]=nestMinverdi;
+        returTabell[2]=tredjeMinverdi;
+
+        return returTabell;
     }
 
 
@@ -337,9 +344,8 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-        int testArray4[]={4,1,2,3,5,10,11,12,13,17,12,15,17};
-        String a []={"ABC"};
-        String b[]={"DEF"};
+        int[] oppgave9={3,1,5,5,3,7,6,9,10};
+        Oblig1.tredjeMin(oppgave9);
 
 
 

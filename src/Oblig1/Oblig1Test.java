@@ -38,6 +38,7 @@ class Oblig1Test {
 
     @org.junit.jupiter.api.Test
     void rotasjon() {
+
     }
 
     @org.junit.jupiter.api.Test

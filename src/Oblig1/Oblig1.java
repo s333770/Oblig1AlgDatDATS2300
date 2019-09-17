@@ -154,11 +154,11 @@ public class Oblig1 {
         if ((n < 2) || (n == 0)) {
             return;
         }
-
         char[] b = Arrays.copyOfRange(a, n - 1, n);
         for (int i = n - 1; i >= 1; i--) {
             a[i] = a[i - 1];
         }
+        System.out.println(Arrays.toString(b));
         System.arraycopy(b, 0, a, 0, 1);
     }
 
@@ -332,7 +332,8 @@ public class Oblig1 {
 
     public static void main(String[] args) {
         int testArray4[]={4,1,2,3,5,10,11,12,13,17,12,15,17};
-        Oblig1.delsortering(testArray4);
+        char [] opppgave5={'A','B','C'};
+        Oblig1.rotasjon(opppgave5);
 
 
 

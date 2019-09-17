@@ -206,17 +206,32 @@ public class Oblig1 {
     }
 
     //Oppgave 7a
-    public static String flett (String s, String t){
-        StringBuilder slutt = new StringBuilder();
-        for (int i = 0; (i >= s.length() || i >= t.length()); i++){
-            if (i<s.length()) {
-                slutt.append(s.charAt(i));
+    public static String sorter (String inputString ){
+        //konverter input string fra flett metoden alfabetisk
+        char tempArray [] = inputString.toCharArray();
+
+        //sorterer tempArray
+        Arrays.sort(tempArray);
+
+        //returnerer den sorterte stringen
+        return new String (tempArray);
+    }
+
+    public static String flett(String s, String t) {
+        String output = "";
+        if (s.length() <= 0 || t.length() <= 0) {
+            throw new IllegalArgumentException("En av strengene er tomme");
+        }
+        for (int i = 0; i < s.length() || i < t.length(); i++) {
+            if (i < s.length()) {
+                output += String.valueOf(s.charAt(i));
             }
-            if (i<t.length()) {
-                slutt.append(t.charAt(i));
+            if (i < t.length()) {
+                output += String.valueOf(t.charAt(i));
             }
         }
-        return slutt.toString();
+        System.out.println(output);
+        return output;
     }
     //Oppgave 7B
     public static String flettEnString(String[] s) { // Ingen eller flere elementer
@@ -233,6 +248,8 @@ public class Oblig1 {
         System.out.println(ut);
         return ut;
     }
+
+
     //Oppgave 8
     public static int[] indekssortering(int[] a) {
         int[] indexer = new int[a.length];
@@ -320,8 +337,9 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-
-        System.out.println(flett("ABCD","EFGH"));
+        int testArray4[]={4,1,2,3,5,10,11,12,13,17,12,15,17};
+        String a []={"ABC"};
+        String b[]={"DEF"};
 
 
 

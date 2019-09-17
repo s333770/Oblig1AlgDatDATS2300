@@ -217,17 +217,21 @@ public class Oblig1 {
         return new String (tempArray);
     }
 
-    public static String flett (String s, String t){
-        StringBuilder slutt = new StringBuilder();
-        for (int i = 0; (i >= s.length() || i >= t.length()); i++){
-            if (i<s.length()) {
-                slutt.append(s.charAt(i));
+    public static String flett(String s, String t) {
+        String output = "";
+        if (s.length() <= 0 || t.length() <= 0) {
+            throw new IllegalArgumentException("En av strengene er tomme");
+        }
+        for (int i = 0; i < s.length() || i < t.length(); i++) {
+            if (i < s.length()) {
+                output += String.valueOf(s.charAt(i));
             }
-            if (i<t.length()) {
-                slutt.append(t.charAt(i));
+            if (i < t.length()) {
+                output += String.valueOf(t.charAt(i));
             }
         }
-        return sorter(slutt.toString());
+        System.out.println(output);
+        return output;
     }
     //Oppgave 7B
     public static String flettEnString(String[] s) { // Ingen eller flere elementer
@@ -244,6 +248,8 @@ public class Oblig1 {
         System.out.println(ut);
         return ut;
     }
+
+
     //Oppgave 8
     public static int[] indekssortering(int[] a) {
         int[] indexer = new int[a.length];
@@ -332,8 +338,8 @@ public class Oblig1 {
 
     public static void main(String[] args) {
         int testArray4[]={4,1,2,3,5,10,11,12,13,17,12,15,17};
-        char [] opppgave5={'A','B','C'};
-        Oblig1.rotasjon(opppgave5);
+        String a []={"ABC"};
+        String b[]={"DEF"};
 
 
 

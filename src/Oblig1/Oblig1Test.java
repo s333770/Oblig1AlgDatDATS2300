@@ -66,23 +66,29 @@ class Oblig1Test {
 
     @org.junit.jupiter.api.Test
     void flett() {
-        String a []={"ABC"};
-        String b[]={"DEF"};
-        assertEquals(a[5],'F');
-
-
+        String a="ABC";
+        String b="DEF";
+        assertEquals("ADBECF",Oblig1.flett(a,b));
     }
-
     @org.junit.jupiter.api.Test
     void flettEnString() {
+        String algdat[] = {"AM ", "L", "GEDS", "ORATKRR", "", "R TRTE", "IO", "TGAUU"};
+        assertEquals("ALGORITMER OG DATASTRUKTURER",Oblig1.flettEnString(algdat));
     }
 
     @org.junit.jupiter.api.Test
     void indekssortering() {
+         int[] oppgave8 = {6, 10, 16, 11, 7, 12, 3, 9, 8, 5};
+         Oblig1.indekssortering(oppgave8);
+         assertEquals(oppgave8[0],3);
     }
 
     @org.junit.jupiter.api.Test
     void tredjeMin() {
+        int[] oppgave9={3,1,5,5,3,7,6,9,10};
+        Oblig1.tredjeMin(oppgave9);
+        assertEquals(oppgave9[0],);
+
     }
 
     @org.junit.jupiter.api.Test

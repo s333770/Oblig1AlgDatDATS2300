@@ -1,3 +1,5 @@
+package Oblig1;
+
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Random;
@@ -26,45 +28,38 @@ public class Oblig1 {
     }
 
     // Oppgave 1
-    public static int maks (int [] a){
-
-        if (a.length < 1) {     //sjekker at tabellen ikke er tom
-            throw new NoSuchElementException("Tabellen er tom!");
+    public static int maks(int[] a) {
+        if (a.length < 1) {
+            throw new NoSuchElementException("Tabellen er tom");
         }
-
-        int max = a[0]; // Initierer variabel med størst verdi
-
-        for (int i = 0; i< a.length-1; i++) {  //Bruker bobblestortering til å sammenlikne to og to tall ved siden av hverandre
-
-            if (a[i] > a[i+1]) {
-                bytt(a,a[i],a[i+1]);
-                max = a [i+1];
+        for (int i = 0; i < a.length - 1; i++) {
+            if (a[i] > a[i + 1]) {
+                int temp = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = temp;
             }
         }
-        return max;
+        System.out.println(a[a.length - 1]);
+        return a[a.length - 1];
     }
 
-    public static int ombyttinger (int [] a){
-        if (a.length < 1){     //sjekker at tabellen ikke er tom
-            throw new NoSuchElementException("Tabellen er tom!");
+    public static int ombyttinger(int[] a) {
+        if (a.length < 1) {
+            throw new NoSuchElementException("Tabellen er tom");
         }
-
-        int teller = 0; //instansierer telleren
-
-        int max = a[0]; // Initierer variabel med størst verdi
-
-        for (int i = 0; i< a.length-1; i++) {  //Bruker bobblestortering til å sammenlikne to og to tall ved siden av hverandre
-
-            if (a[i] > a[i+1]) {
-                bytt(a,a[i],a[i+1]);
-                teller++;
-                max = a [i+1];
+        int antallOmbyttinger = 0;
+        for (int j = 0; j < a.length - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                int temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+                antallOmbyttinger++;
             }
-            else {
-                max = a[i+1];
-            }
+
         }
-        return teller;
+        System.out.println(antallOmbyttinger);
+        return antallOmbyttinger;
+
     }
 
     // Oppgave 2
@@ -86,7 +81,7 @@ public class Oblig1 {
     }
 
     // Oppgave 3
-    public static int antallUlikeUsortert(int[] a){
+    public static int antallUlikeUsortert3(int[] a){
         if(a.length < 1) {
             return 0;
         }
@@ -103,70 +98,48 @@ public class Oblig1 {
 
     }
     //Oppgave 4
-    public static int partisjonering (int a [], int vs, int hs) {
+    public static int[] delsortering(int[] a) {
 
-        while (true){
-            while (vs<=hs && a[hs] % 2 == 0) {
-                hs--;
+        //Gjør først oppdeling av par og oddetall
+        int start = 0, slutt = a.length - 1;
+        int oddetallTeller = 0;
+        while (start < slutt) {
+            while (a[start] % 2 == 1) {
+                start++;
             }
-            while (vs<=hs && a[vs] % 2 == 1){
-                vs++;
-
+            while (a[slutt] % 2 == 0) {
+                oddetallTeller++;
+                slutt--;
             }
-            if(vs<hs){
-                bytt(a,vs++,hs--);
+            if (start < slutt) {
+                int temp = a[start];
+                a[start] = a[slutt];
+                a[slutt] = temp;
+                start++;
+                slutt--;
             }
-            return vs;
         }
+        for (int i = 0; i < oddetallTeller; i++) {
+            int temp = a[i];
+            int j = i;
+            while (j > 0 && temp < a[j - 1]) {
+                a[j] = a[j - 1];
+                j = j - 1;
+            }
+            a[j] = temp;
+        }
+        for (int j = oddetallTeller + 1; j < a.length; j++) {
+            int temp = a[j];
+            int x = j;
+            while (x > 0 && temp < a[x - 1]) {
+                a[x] = a[x - 1];
+                x = x - 1;
+            }
+            a[x] = temp;
+        }
+        System.out.println(Arrays.toString(a));
+        return a;
     }
-
-    public static int partition (int [] a, int vs, int hs){
-
-        int pivot = a[vs];
-        int i = vs - 1;
-        int j = hs + 1;
-
-        while (i<j){
-            for (i++; a[i] < pivot; i++);
-            for (j--; a[j] > pivot; j--);
-            if(i<j){
-                bytt(a,i,j);
-            }
-        }
-        return j;
-    }
-
-    public static void kvikksort (int [] a, int vs, int hs){
-        if (vs < hs){
-            int pi = partition(a,vs,hs);
-            kvikksort(a,vs,pi-1);
-            kvikksort(a,hs,pi+1);
-        }
-
-    }
-
-    public static void delSortering (int [] a){
-        int par = 0;
-        int odd = 0;
-
-        if (a.length == 0) {
-            return;
-        }
-
-        partisjonering(a,0,a.length-1);
-
-        for (int i = 0; i <a.length; i++){
-            if (Math.floorMod(a[i],2)== 0){ //Bruker floorMod da negative tall kan også tastes inn og vil ha "negativ" modulu tilbake
-                par = par + 1;
-            }
-            else {
-                odd = odd +1;
-            }
-        }
-        kvikksort(a,0, odd-1);
-        kvikksort(a,odd,a.length-1);
-    }
-
     //Oppgave 5
     public static void rotasjon(char[] a){
 
@@ -351,8 +324,9 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-       int [] a=  randPermBoolean(10);
-       maks(a);
+        int testArray4[]={4,1,2,3,5};
+        Oblig1.delsortering(testArray4);
+
 
 
 

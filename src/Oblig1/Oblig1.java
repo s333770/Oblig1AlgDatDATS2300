@@ -206,17 +206,6 @@ public class Oblig1 {
     }
 
     //Oppgave 7a
-    public static String sorter (String inputString ){
-        //konverter input string fra flett metoden alfabetisk
-        char tempArray [] = inputString.toCharArray();
-
-        //sorterer tempArray
-        Arrays.sort(tempArray);
-
-        //returnerer den sorterte stringen
-        return new String (tempArray);
-    }
-
     public static String flett (String s, String t){
         StringBuilder slutt = new StringBuilder();
         for (int i = 0; (i >= s.length() || i >= t.length()); i++){
@@ -227,7 +216,7 @@ public class Oblig1 {
                 slutt.append(t.charAt(i));
             }
         }
-        return sorter(slutt.toString());
+        return slutt.toString();
     }
     //Oppgave 7B
     public static String flettEnString(String[] s) { // Ingen eller flere elementer
@@ -331,9 +320,8 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-        int testArray4[]={4,1,2,3,5,10,11,12,13,17,12,15,17};
-        char [] opppgave5={'A','B','C'};
-        Oblig1.rotasjon(opppgave5);
+
+        System.out.println(flett("ABCD","EFGH"));
 
 
 

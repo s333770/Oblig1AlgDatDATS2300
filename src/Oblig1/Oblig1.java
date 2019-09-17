@@ -105,6 +105,71 @@ public class Oblig1 {
         return antall;
 
     }
+    //Oppgave 4
+
+    public static int partisjonering (int a [], int vs, int hs) {
+
+        while (true){
+            while (vs<=hs && a[hs] % 2 == 0) {
+                hs--;
+            }
+            while (vs<=hs && a[vs] % 2 == 1){
+                vs++;
+
+            }
+            if(vs<hs){
+                bytt(a,vs++,hs--);
+            }
+            return vs;
+        }
+    }
+
+    public static int partition (int [] a, int vs, int hs){
+
+        int pivot = a[vs];
+        int i = vs - 1;
+        int j = hs + 1;
+
+        while (i<j){
+            for (i++; a[i] < pivot; i++);
+            for (j--; a[j] > pivot; j--);
+            if(i<j){
+                bytt(a,i,j);
+            }
+        }
+        return j;
+    }
+
+    public static void kvikksort (int [] a, int vs, int hs){
+        if (vs < hs){
+            int pi = partition(a,vs,hs);
+            kvikksort(a,vs,pi-1);
+            kvikksort(a,hs,pi+1);
+        }
+
+    }
+
+    public static void delSortering (int [] a){
+        int par = 0;
+        int odd = 0;
+
+        if (a.length == 0) {
+            return;
+        }
+
+        partisjonering(a,0,a.length-1);
+
+        for (int i = 0; i <a.length; i++){
+            if (Math.floorMod(a[i],2)== 0){ //Bruker floorMod da negative tall kan også tastes inn og vil ha "negativ" modulu tilbake
+                par = par + 1;
+            }
+            else {
+                odd = odd +1;
+            }
+        }
+        kvikksort(a,0, odd-1);
+        kvikksort(a,odd,a.length-1);
+    }
 
     //Oppgave 5
     public static void rotasjon(char[] a){

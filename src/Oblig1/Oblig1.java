@@ -25,6 +25,7 @@ public class Oblig1 {
         int temp = a[i]; a[i] = a[j]; a[j] = temp;
     }
 
+    // Oppgave 1
     public static int maks (int [] a){
 
         if (a.length < 1) {     //sjekker at tabellen ikke er tom
@@ -64,6 +65,45 @@ public class Oblig1 {
             }
         }
         return teller;
+    }
+
+    // Oppgave 2
+    public static int antallUlikeSortert(int[] a){
+        int m = 0;
+        int antall = 0;
+
+        for (int i = 0; i < a.length; i++){
+            if ( a[i] >= m){
+                if (a[i] != m){
+                    antall++;
+                }
+                m = a[i];
+            }
+            else{
+                throw new IllegalStateException("Arrayet er ikke sortert stigende");
+            }
+        }
+        return antall;
+    }
+
+    // Oppgave 3
+    public static int antallUlikeUsortert(int[] a){
+        if(a.length < 1) {
+            return 0;
+        }
+
+        int antall = a.length;
+
+        for (int i = 0; i < a.length; i++){
+            for(int j = i+1; j < a.length; j++){
+                if ( a[j] == a[i]){
+                    antall--;
+                    break;
+                }
+            }
+        }
+        return antall;
+
     }
 
     //Oppgave 5

@@ -71,7 +71,6 @@ public class Oblig1 {
     public static int antallUlikeSortert(int[] a){
         int m = 0;
         int antall = 0;
-
         for (int i = 0; i < a.length; i++){
             if ( a[i] >= m){
                 if (a[i] != m){
@@ -91,9 +90,7 @@ public class Oblig1 {
         if(a.length < 1) {
             return 0;
         }
-
         int antall = a.length;
-
         for (int i = 0; i < a.length; i++){
             for(int j = i+1; j < a.length; j++){
                 if ( a[j] == a[i]){
@@ -106,7 +103,6 @@ public class Oblig1 {
 
     }
     //Oppgave 4
-
     public static int partisjonering (int a [], int vs, int hs) {
 
         while (true){
@@ -230,7 +226,6 @@ public class Oblig1 {
     }
 
     //Oppgave 7a
-
     public static String sorter (String inputString ){
         //konverter input string fra flett metoden alfabetisk
         char tempArray [] = inputString.toCharArray();
@@ -244,7 +239,6 @@ public class Oblig1 {
 
     public static String flett (String s, String t){
         StringBuilder slutt = new StringBuilder();
-
         for (int i = 0; (i >= s.length() || i >= t.length()); i++){
             if (i<s.length()) {
                 slutt.append(s.charAt(i));
@@ -254,6 +248,105 @@ public class Oblig1 {
             }
         }
         return sorter(slutt.toString());
+    }
+    //Oppgave 7B
+    public static String flettEnString(String[] s) { // Ingen eller flere elementer
+        String ut = "";
+        int[] arr = new int[s.length];
+        for (int i = 0; i < s.length; i++) {
+            for (int j = 0; j < s.length; j++) {
+                if (arr[j] < s[j].length()) {
+                    ut += s[j].toCharArray()[arr[j]];
+                    arr[j]++;
+                }
+            }
+        }
+        System.out.println(ut);
+        return ut;
+    }
+    //Oppgave 8
+    public static int[] indekssortering(int[] a) {
+        int[] indexer = new int[a.length];
+        for (int i = 1; i < a.length; i++) {
+            int j = i;
+            for (; j >= 1 && a[j] < a[j - 1]; j--) {
+                int temp = a[j];
+                a[j] = a[j - 1];
+                indexer[j] = indexer[j - 1];
+                a[j - 1] = temp;
+            }
+            indexer[j] = i;
+        }
+        return indexer;
+    }
+
+    //Oppgave9
+    public static int[] tredjeMin(int[] a) // ny versjon
+    {
+        int maksverdi=0;
+        int nestMaksverdi=0;
+        int tredjeMaksverdi=0;
+        int[] returTabell = new int[3];
+        if (a.length < 3) {
+            throw new IndexOutOfBoundsException("For liten array");
+        }
+        if(a[2]>a[1] && a[2]>a[0]&&a[1]>a[0]){ //a2 a1 a0
+            maksverdi=a[2];
+            nestMaksverdi=a[1];
+            tredjeMaksverdi=a[0];
+        }
+        else if(a[2]>a[1]&&a[2]>a[0]&&a[1]<a[0]){ //a2 a0 a1
+            maksverdi=a[2];
+            nestMaksverdi=a[0];
+            tredjeMaksverdi=a[1];
+        }
+        else if(a[2]<a[1] && a[1]>a[0] && a[2]>a[0]){ // a1 a2 a0
+            maksverdi=a[1];
+            nestMaksverdi=a[2];
+            tredjeMaksverdi=a[0];
+
+        }
+        else if(a[2]<a[1] && a[1]>a[0] && a[0]>a[2]){ //a1 a0 a2
+            maksverdi=a[1];
+            nestMaksverdi=a[0];
+            tredjeMaksverdi=a[2];
+        }
+        else if(a[2]<a[1] && a[1]<a[0] && a[0]>a[2]){ //a0 a1 a2
+            maksverdi=a[0];
+            nestMaksverdi=a[1];
+            tredjeMaksverdi=a[2];
+        }
+        else if(a[2]>a[1] && a[1]<a[0] && a[0]>a[2]){ //a0 a2 a1
+            maksverdi=a[0];
+            nestMaksverdi=a[2];
+            tredjeMaksverdi=a[1];
+        }
+        for(int i=3; i<a.length;i++){
+            if(a[i]>tredjeMaksverdi){
+                if(a[i]>nestMaksverdi){
+                    if(a[i]>maksverdi){
+                        tredjeMaksverdi=nestMaksverdi;
+                        nestMaksverdi=maksverdi;
+                        maksverdi=a[i];
+                    }
+                }
+            }
+        }
+        System.out.println("Største tall "+maksverdi+" Nest største "+nestMaksverdi+" TredjeStørst "+tredjeMaksverdi);
+        return a;
+    }
+
+
+//Oppgave 10
+    public static boolean inneholdt(String s1,String s2){
+        char [] karakterer1=s1.toCharArray();
+        for(int i=0; i<s1.length(); i++){
+            char k= s1.charAt(i);
+            if(s2.indexOf(k)==-1){//Retunerer indeksen til tallet, hvis tallet ikke eksisterer returner -1
+                return false;
+            }
+        }
+        return true;
     }
 
 

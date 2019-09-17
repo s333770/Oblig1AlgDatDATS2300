@@ -65,11 +65,12 @@ class Oblig1Test {
     }
 
     @org.junit.jupiter.api.Test
-    void sorter() {
-    }
-
-    @org.junit.jupiter.api.Test
     void flett() {
+        String a []={"ABC"};
+        String b[]={"DEF"};
+        assertEquals(a[5],'F');
+
+
     }
 
     @org.junit.jupiter.api.Test

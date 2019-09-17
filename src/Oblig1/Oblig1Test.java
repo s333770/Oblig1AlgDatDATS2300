@@ -30,28 +30,38 @@ class Oblig1Test {
         assertEquals(Oblig1.antallUlikeUsortert3(testArray3),7);
     }
 
-    @org.junit.jupiter.api.Test
+    /*@org.junit.jupiter.api.Test
     void delSortering() {
+
         int testArray4[]={4,1,2,3,5};
-        Oblig1.delSortering(testArray4);
+        Oblig1.delsortering(testArray4);
         assertEquals(1,testArray4[0]);
-    }
+
+        int testArray4[]={4,1,2,3,5,10,11,12,13,17,12,15,17};
+        Oblig1.delsortering(testArray4);
+        assertEquals(testArray4[0],1);
+
+    }*/
 
     @org.junit.jupiter.api.Test
     void rotasjon() {
-
+        char a []={'A','B','C','D','E','F','G','H','I','J'};
+        Oblig1.rotasjon(a);
+        assertEquals(a[0],'J');
     }
 
     @org.junit.jupiter.api.Test
-    void testRotasjon() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void gcd() {
+    void rotasjon2() {
+        char a []={'A','B','C','D','E','F','G','H','I','J'};
+        Oblig1.rotasjon2(a,3);
+        assertEquals(a[0],'H');
     }
 
     @org.junit.jupiter.api.Test
     void rotasjon1() {
+        char a []={'A','B','C','D','E','F','G','H','I','J'};
+        Oblig1.rotasjon1(a,7);
+        assertEquals(a[0],'D');
     }
 
     @org.junit.jupiter.api.Test

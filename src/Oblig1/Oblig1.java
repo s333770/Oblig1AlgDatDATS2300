@@ -163,7 +163,7 @@ public class Oblig1 {
     }
 
     //Oppgave 6
-    public static void rotasjon (char [] a, int k) {   // denne versonen har 2(n+d) tabelakkssseser men er mer effektiv hvis k er liten i forhold til n
+    public static void rotasjon2 (char [] a, int k) {   // denne versonen har 2(n+d) tabelakkssseser men er mer effektiv hvis k er liten i forhold til n
         int n = a.length;
         if ((n < 2) || (n == 0)) {
             return;

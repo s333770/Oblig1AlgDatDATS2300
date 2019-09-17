@@ -1,5 +1,6 @@
 package Oblig1;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Oblig1Test {
@@ -31,9 +32,9 @@ class Oblig1Test {
 
     @org.junit.jupiter.api.Test
     void delSortering() {
-        int testArray4[]={4,1,2,3,5,10,11,12,13,17,12,15,17};
-        Oblig1.delsortering(testArray4);
-        assertEquals(testArray4[0],1);
+        int testArray4[]={4,1,2,3,5};
+        Oblig1.delSortering(testArray4);
+        assertEquals(1,testArray4[0]);
     }
 
     @org.junit.jupiter.api.Test

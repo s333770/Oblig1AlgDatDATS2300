@@ -352,7 +352,7 @@ public class Oblig1 {
 
     public static void main(String[] args) {
        int [] a=  randPermBoolean(10);
-       maks(a);
+       delSortering(a);
 
 
 

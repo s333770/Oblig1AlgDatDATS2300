@@ -1,3 +1,9 @@
+/*
+Andreas Tønseth Myhr s333770 Laila Doudouh s331351 Martin Phan s333747
+
+
+ */
+
 package Oblig1;
 
 import java.util.Arrays;
@@ -13,7 +19,7 @@ public class Oblig1 {
 
         for(int i=0; i<n;){
             int k=r.nextInt(n);
-            if(har[k]==false){
+            if(!har[k]){
                 har[k]=true;
                 a[i++]=k+1;
             }
@@ -340,15 +346,5 @@ public class Oblig1 {
             }
         }
         return true;
-    }
-
-
-    public static void main(String[] args) {
-        int[] oppgave9={3,1,5,5,3,7,6,9,10};
-        Oblig1.tredjeMin(oppgave9);
-
-
-
-
     }
 }

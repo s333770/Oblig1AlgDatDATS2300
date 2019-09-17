@@ -66,6 +66,7 @@ public class Oblig1 {
         return teller;
     }
 
+    //Oppgave 5
     public static void rotasjon(char[] a){
 
         int n = a.length;

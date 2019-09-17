@@ -1,3 +1,5 @@
+package Oblig1;
+
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Random;
@@ -26,45 +28,38 @@ public class Oblig1 {
     }
 
     // Oppgave 1
-    public static int maks (int [] a){
-
-        if (a.length < 1) {     //sjekker at tabellen ikke er tom
-            throw new NoSuchElementException("Tabellen er tom!");
+    public static int maks(int[] a) {
+        if (a.length < 1) {
+            throw new NoSuchElementException("Tabellen er tom");
         }
-
-        int max = a[0]; // Initierer variabel med størst verdi
-
-        for (int i = 0; i< a.length-1; i++) {  //Bruker bobblestortering til å sammenlikne to og to tall ved siden av hverandre
-
-            if (a[i] > a[i+1]) {
-                bytt(a,a[i],a[i+1]);
-                max = a [i+1];
+        for (int i = 0; i < a.length - 1; i++) {
+            if (a[i] > a[i + 1]) {
+                int temp = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = temp;
             }
         }
-        return max;
+        System.out.println(a[a.length - 1]);
+        return a[a.length - 1];
     }
 
-    public static int ombyttinger (int [] a){
-        if (a.length < 1){     //sjekker at tabellen ikke er tom
-            throw new NoSuchElementException("Tabellen er tom!");
+    public static int ombyttinger(int[] a) {
+        if (a.length < 1) {
+            throw new NoSuchElementException("Tabellen er tom");
         }
-
-        int teller = 0; //instansierer telleren
-
-        int max = a[0]; // Initierer variabel med størst verdi
-
-        for (int i = 0; i< a.length-1; i++) {  //Bruker bobblestortering til å sammenlikne to og to tall ved siden av hverandre
-
-            if (a[i] > a[i+1]) {
-                bytt(a,a[i],a[i+1]);
-                teller++;
-                max = a [i+1];
+        int antallOmbyttinger = 0;
+        for (int j = 0; j < a.length - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                int temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+                antallOmbyttinger++;
             }
-            else {
-                max = a[i+1];
-            }
+
         }
-        return teller;
+        System.out.println(antallOmbyttinger);
+        return antallOmbyttinger;
+
     }
 
     // Oppgave 2
@@ -86,7 +81,7 @@ public class Oblig1 {
     }
 
     // Oppgave 3
-    public static int antallUlikeUsortert(int[] a){
+    public static int antallUlikeUsortert3(int[] a){
         if(a.length < 1) {
             return 0;
         }
@@ -142,7 +137,6 @@ public class Oblig1 {
             kvikksort(a,vs,pi-1);
             kvikksort(a,hs,pi+1);
         }
-
     }
 
     public static void delSortering (int [] a){
@@ -164,9 +158,8 @@ public class Oblig1 {
             }
         }
         kvikksort(a,0, odd-1);
-        kvikksort(a,odd,a.length-1);
+        kvikksort(a,odd+1,a.length-1);
     }
-
     //Oppgave 5
     public static void rotasjon(char[] a){
 
@@ -351,8 +344,9 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-       int [] a=  randPermBoolean(10);
-       delSortering(a);
+        int testArray4[]={4,1,2,3,5};
+        Oblig1.delSortering(testArray4);
+
 
 
 

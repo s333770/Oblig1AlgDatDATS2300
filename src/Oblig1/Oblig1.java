@@ -66,11 +66,96 @@ public class Oblig1 {
         return teller;
     }
 
+    //Oppgave 5
+    public static void rotasjon(char[] a){
+
+        int n = a.length;
+        if ((n < 2) || (n == 0)) {
+            return;
+        }
+
+        char[] b = Arrays.copyOfRange(a, n - 1, n);
+        for (int i = n - 1; i >= 1; i--) {
+            a[i] = a[i - 1];
+        }
+        System.arraycopy(b, 0, a, 0, 1);
+    }
+
+    //Oppgave 6
+    public static void rotasjon (char [] a, int k) {   // denne versonen har 2(n+d) tabelakkssseser men er mer effektiv hvis k er liten i forhold til n
+        int n = a.length;
+        if ((n < 2) || (n == 0)) {
+            return;
+        }
+        if ((k %= n) < 0) k += n;
+
+        char [] b = Arrays.copyOfRange(a,n-k,n);
+        for (int i = n-1; i >= k; i--){
+            a[i] = a[i-k];
+        }
+        System.arraycopy(b,0,a,0,k);
+    }   //////sjekk effektiviteten her
+
+    public static int gcd (int a, int b){
+        return b == 0 ? a: gcd(b,a%b);
+    }
+
+    public static void rotasjon1 (char [] a, int k){   /// denne versjonen har 2n tabelakksseser, færre en den første men mer arbeid knyttet til hver akssess
+        int n = a.length;
+        if ((n < 2) || (n == 0)) {
+            return;
+        }
+        if ((k %= n) < 0) k += n;
+
+        int s = gcd(n,k);
+
+        for (int syk = 0; syk < s; syk++){
+            char verdi = a[syk];
+
+            for (int i = syk -k, j=syk; i != syk; i-=k){
+                if ( i<0) {
+                    i += n;
+                }
+                a[j] = a[i];
+                j = i;
+            }
+
+            a[syk+k] = verdi;
+        }
+    }
+
+    //Oppgave 7a
+
+    public static String sorter (String inputString ){
+        //konverter input string fra flett metoden alfabetisk
+        char tempArray [] = inputString.toCharArray();
+
+        //sorterer tempArray
+        Arrays.sort(tempArray);
+
+        //returnerer den sorterte stringen
+        return new String (tempArray);
+    }
+
+    public static String flett (String s, String t){
+        StringBuilder slutt = new StringBuilder();
+
+        for (int i = 0; (i >= s.length() || i >= t.length()); i++){
+            if (i<s.length()) {
+                slutt.append(s.charAt(i));
+            }
+            if (i<t.length()) {
+                slutt.append(t.charAt(i));
+            }
+        }
+        return sorter(slutt.toString());
+    }
+
 
     public static void main(String[] args) {
        int [] a=  randPermBoolean(10);
        maks(a);
-       
+
 
 
     }

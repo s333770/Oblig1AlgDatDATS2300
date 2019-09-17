@@ -98,67 +98,54 @@ public class Oblig1 {
 
     }
     //Oppgave 4
-    public static int partisjonering (int a [], int vs, int hs) {
+    public static int[] delsortering(int[] a) {
 
-        while (true){
-            while (vs<=hs && a[hs] % 2 == 0) {
-                hs--;
-            }
-            while (vs<=hs && a[vs] % 2 == 1){
-                vs++;
-
-            }
-            if(vs<hs){
-                bytt(a,vs++,hs--);
-            }
-            return vs;
-        }
-    }
-
-    public static int partition (int [] a, int vs, int hs){
-
-        int pivot = a[vs];
-        int i = vs - 1;
-        int j = hs + 1;
-
-        while (i<j){
-            for (i++; a[i] < pivot; i++);
-            for (j--; a[j] > pivot; j--);
-            if(i<j){
-                bytt(a,i,j);
+        //Gjør først oppdeling av par og oddetall
+        int start = 0, slutt = a.length - 1;
+        int oddetallTeller = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 2 == 1) {
+                oddetallTeller++;
             }
         }
-        return j;
-    }
-
-    public static void kvikksort (int [] a, int vs, int hs){
-        if (vs < hs){
-            int pi = partition(a,vs,hs);
-            kvikksort(a,vs,pi-1);
-            kvikksort(a,hs,pi+1);
-        }
-    }
-
-    public static void delSortering (int [] a){
-        int par = 0;
-        int odd = 0;
-
-        if (a.length == 0) {
-            return;
-        }
-
-        partisjonering(a,0,a.length-1);
-
-        for (int i = 0; i <a.length; i++){
-            if (Math.floorMod(a[i],2)== 0){ //Bruker floorMod da negative tall kan også tastes inn og vil ha "negativ" modulu tilbake
-                par = par + 1;
+        while (start < slutt) {
+            while (a[start] % 2 == 1) {
+                start++;
             }
-            else {
-                odd = odd +1;
+            while (a[slutt] % 2 == 0) {
+                slutt--;
+            }
+            if (start < slutt) {
+                int temp = a[start];
+                a[start] = a[slutt];
+                a[slutt] = temp;
+                start++;
+                slutt--;
             }
         }
-        kvikksort(a,0, odd-1);
-        kvikksort(a,odd+1,a.length-1);
+        System.out.println(Arrays.toString(a));
+
+        for (int i = 0; i < oddetallTeller - 1; i++) {
+            for (int j = 0; j < oddetallTeller - i -1; j++) {
+                if (a[j] > a[j + 1]) {
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                }
+            }
+        }
+        for(int x=oddetallTeller; x<a.length;x++){
+            for(int y=oddetallTeller; y<a.length-1;y++){
+                if (a[y] > a[y + 1]) {
+                    int temp = a[y];
+                    a[y] = a[y + 1];
+                    a[y + 1] = temp;
+                }
+            }
+        }
+        System.out.println(oddetallTeller);
+        System.out.println(Arrays.toString(a));
+        return a;
     }
     //Oppgave 5
     public static void rotasjon(char[] a){
@@ -176,7 +163,7 @@ public class Oblig1 {
     }
 
     //Oppgave 6
-    public static void rotasjon (char [] a, int k) {   // denne versonen har 2(n+d) tabelakkssseser men er mer effektiv hvis k er liten i forhold til n
+    public static void rotasjon2 (char [] a, int k) {   // denne versonen har 2(n+d) tabelakkssseser men er mer effektiv hvis k er liten i forhold til n
         int n = a.length;
         if ((n < 2) || (n == 0)) {
             return;
@@ -344,8 +331,8 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-        int testArray4[]={4,1,2,3,5};
-        Oblig1.delSortering(testArray4);
+        int testArray4[]={4,1,2,3,5,10,11,12,13,17,12,15,17};
+        Oblig1.delsortering(testArray4);
 
 
 

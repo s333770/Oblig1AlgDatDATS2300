@@ -31,9 +31,9 @@ class Oblig1Test {
 
     @org.junit.jupiter.api.Test
     void delSortering() {
-        int testArray4[]={4,1,2,3,5};
+        int testArray4[]={4,1,2,3,5,10,11,12,13,17,12,15,17};
         Oblig1.delsortering(testArray4);
-        assertEquals(3,testArray4[1]);
+        assertEquals(testArray4[0],1);
     }
 
     @org.junit.jupiter.api.Test

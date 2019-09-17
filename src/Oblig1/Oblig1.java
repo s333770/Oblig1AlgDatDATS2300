@@ -103,12 +103,16 @@ public class Oblig1 {
         //Gjør først oppdeling av par og oddetall
         int start = 0, slutt = a.length - 1;
         int oddetallTeller = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 2 == 1) {
+                oddetallTeller++;
+            }
+        }
         while (start < slutt) {
             while (a[start] % 2 == 1) {
                 start++;
             }
             while (a[slutt] % 2 == 0) {
-                oddetallTeller++;
                 slutt--;
             }
             if (start < slutt) {
@@ -119,24 +123,27 @@ public class Oblig1 {
                 slutt--;
             }
         }
-        for (int i = 0; i < oddetallTeller; i++) {
-            int temp = a[i];
-            int j = i;
-            while (j > 0 && temp < a[j - 1]) {
-                a[j] = a[j - 1];
-                j = j - 1;
+        System.out.println(Arrays.toString(a));
+
+        for (int i = 0; i < oddetallTeller - 1; i++) {
+            for (int j = 0; j < oddetallTeller - i -1; j++) {
+                if (a[j] > a[j + 1]) {
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                }
             }
-            a[j] = temp;
         }
-        for (int j = oddetallTeller + 1; j < a.length; j++) {
-            int temp = a[j];
-            int x = j;
-            while (x > 0 && temp < a[x - 1]) {
-                a[x] = a[x - 1];
-                x = x - 1;
+        for(int x=oddetallTeller; x<a.length;x++){
+            for(int y=oddetallTeller; y<a.length-1;y++){
+                if (a[y] > a[y + 1]) {
+                    int temp = a[y];
+                    a[y] = a[y + 1];
+                    a[y + 1] = temp;
+                }
             }
-            a[x] = temp;
         }
+        System.out.println(oddetallTeller);
         System.out.println(Arrays.toString(a));
         return a;
     }
@@ -324,7 +331,7 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-        int testArray4[]={4,1,2,3,5};
+        int testArray4[]={4,1,2,3,5,10,11,12,13,17,12,15,17};
         Oblig1.delsortering(testArray4);
 
 

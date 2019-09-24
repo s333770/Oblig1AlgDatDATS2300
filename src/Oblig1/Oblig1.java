@@ -104,7 +104,7 @@ public class Oblig1 {
 
     }
     //Oppgave 4
-    public static int[] delsortering(int[] a) {
+    public static void delsortering(int[] a) {
         //Gjør først oppdeling av par og oddetall
         int start = 0, slutt = a.length - 1;
         int oddetallTeller = 0;
@@ -124,8 +124,9 @@ public class Oblig1 {
         }
         if (bareOddetall != 0 && barePartall==0) {
             kvikksortering0(a,0,a.length-1);
-        } else if (barePartall != 0 && barePartall==0) {
+        } else if (barePartall != 0 && bareOddetall==0) {
             kvikksortering0(a,0,a.length-1);
+            System.out.println(Arrays.toString(a));
         } else {
             while (start < slutt) {
                 while (a[start] % 2 != 0) {
@@ -142,14 +143,12 @@ public class Oblig1 {
                     slutt--;
                 }
             }
-            System.out.println(oddetallTeller);
-            System.out.println(Arrays.toString(a));
             kvikksortering0(a,0,oddetallTeller-1);
             kvikksortering0(a,oddetallTeller,a.length-1);
-            System.out.println(Arrays.toString(a));
+
         }
 
-        return a;
+
     }
 
 
@@ -396,10 +395,9 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-        int []a ={5,6,4,-5,-4,3,};
-        int []b={2,4,6,8,10};
-        System.out.println(Arrays.toString(a));
-        delsortering(a);
+        int []b ={1,2,4,3,5,6};
+        System.out.println(Arrays.toString(b));
+        delsortering(b);
 
     }
 }

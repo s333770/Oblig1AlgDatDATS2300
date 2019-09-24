@@ -12,22 +12,6 @@ import java.util.Random;
 
 public class Oblig1 {
 
-    public static int[] randPermBoolean(int n){ //Kopiert fra boken for generering av testverdier
-        Random r= new Random();
-        int []a =new int[n];
-        boolean [] har = new boolean[n];
-
-        for(int i=0; i<n;){
-            int k=r.nextInt(n);
-            if(!har[k]){
-                har[k]=true;
-                a[i++]=k+1;
-            }
-        }
-        System.out.println(Arrays.toString(a));
-        return a;
-    }
-
 
     // Oppgave 1
     public static int maks(int[] a) {
@@ -151,10 +135,6 @@ public class Oblig1 {
 
     }
 
-
-
-
-
     //Oppgave 5
     public static void rotasjon(char[] a){
 
@@ -171,7 +151,7 @@ public class Oblig1 {
     }
 
     //Oppgave 6
-    public static void rotasjon2 (char [] a, int k) {   // denne versonen har 2(n+d) tabelakkssseser men er mer effektiv hvis k er liten i forhold til n
+    public static void rotasjon1 (char [] a, int k) {   // denne versonen har 2(n+d) tabelakkssseser men er mer effektiv hvis k er liten i forhold til n
         int n = a.length;
         if ((n < 2) || (n == 0)) {
             return;
@@ -189,7 +169,7 @@ public class Oblig1 {
         return b == 0 ? a: gcd(b,a%b);
     }
 
-    public static void rotasjon1 (char [] a, int k){   /// denne versjonen har 2n tabelakksseser, færre en den første men mer arbeid knyttet til hver akssess
+    public static void rotasjon (char [] a, int k){   /// denne versjonen har 2n tabelakksseser, færre en den første men mer arbeid knyttet til hver akssess
         int n = a.length;
         if ((n < 2) || (n == 0)) {
             return;
@@ -213,18 +193,6 @@ public class Oblig1 {
         }
     }
 
-
-/*    public static String sorter (String inputString ){
-        //konverter input string fra flett metoden alfabetisk
-        char tempArray [] = inputString.toCharArray();
-
-        //sorterer tempArray
-        Arrays.sort(tempArray);
-
-        //returnerer den sorterte stringen
-        return new String (tempArray);
-    }
-    */
 
     //Oppgave 7
     public static String flett(String s, String t)
@@ -281,6 +249,8 @@ public class Oblig1 {
             index[0] = 0;
             for(int i=1;i<arr.length;i++){
                 int j=i;
+                //Insertion sort sort brukes i denne oppgaven, vi tar altså
+                // og finner laveste verdi før vi setter inn denne
                 for(;j>=1 && arr[j]<arr[j-1];j--){
                     int temp = arr[j];
                     arr[j] = arr[j-1];
@@ -289,7 +259,7 @@ public class Oblig1 {
                 }
                 index[j]=i;
             }
-            return index;//indices of sorted elements
+            return index;
         }
 
 
@@ -389,7 +359,7 @@ public class Oblig1 {
         }
     return true;
     }
-    //Se litt mer på denne før innlevering
+
 
 
     //Hjelpemetoder fra boken
@@ -431,6 +401,21 @@ public class Oblig1 {
         System.arraycopy(b, 0, arr, b.length, b.length);
 
         return arr;
+    }
+    public static int[] randPermBoolean(int n){ //Kopiert fra boken for generering av testverdier
+        Random r= new Random();
+        int []a =new int[n];
+        boolean [] har = new boolean[n];
+
+        for(int i=0; i<n;){
+            int k=r.nextInt(n);
+            if(!har[k]){
+                har[k]=true;
+                a[i++]=k+1;
+            }
+        }
+        System.out.println(Arrays.toString(a));
+        return a;
     }
 
 

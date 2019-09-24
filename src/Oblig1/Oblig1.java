@@ -68,6 +68,10 @@ public class Oblig1 {
 
     }
 
+    // 1) Det blir flest ombyttinger når det største tallet er foran.
+    // 2) Det blir færrest ombyttinger når arrayet er sortert stigende.
+    // 3) Algoritmen vår er av orden O(n), noe som er det samme som de maks metodene i kompendiet.
+
     // Oppgave 2
     public static int antallUlikeSortert(int[] a){
         int m = 0;

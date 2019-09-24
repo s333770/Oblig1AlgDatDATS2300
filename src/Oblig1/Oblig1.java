@@ -247,7 +247,7 @@ public class Oblig1 {
     //Oppgave 7B
     public static String flett(String... s) {
 
-        StringBuilder flettasam = new StringBuilder();
+        StringBuilder result = new StringBuilder();
 
         int lengst = 0;
         for (int i = 0; i < s.length; i++) {
@@ -258,11 +258,11 @@ public class Oblig1 {
                 if (s[j].length() <= i) {
                 }
                 else {
-                    flettasam.append(s[j].charAt(i));
+                    result.append(s[j].charAt(i));
                 }
             }
         }
-        return flettasam.toString();
+        return result.toString();
     }
 
 

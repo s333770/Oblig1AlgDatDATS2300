@@ -159,8 +159,7 @@ public class Oblig1Test {
                 || Oblig1.antallUlikeUsortert(d) != 6
                 || Oblig1.antallUlikeUsortert(e) != 5
                 || Oblig1.antallUlikeUsortert(f) != 3) {
-            System.out.println("Oppgave 3: b) Metoden gir feil resultat!");
-            antallFeil++;
+            System.out.println("Oppgave 3: b) Metoden gir feil resultat!");   antallFeil++;
         }
 
         if (!Arrays.equals(d, dkopi)) {

@@ -245,20 +245,26 @@ public class Oblig1 {
     }
 
     //Oppgave 7B
-    public static String flett(String... s) { // Ingen eller flere  //
-        String ut = "";
-        int[] arr = new int[s.length];
+    public static String flett(String... s) {
+
+        StringBuilder flettasam = new StringBuilder();
+
+        int lengst = 0;
         for (int i = 0; i < s.length; i++) {
+            if (s[i].length() > lengst) lengst = s[i].length();
+        }
+        for (int i = 0; i < lengst; i++) {
             for (int j = 0; j < s.length; j++) {
-                if (arr[j] < s[j].length()) {
-                    ut += s[j].toCharArray()[arr[j]];
-                    arr[j]++;
+                if (s[j].length() <= i) {
+                }
+                else {
+                    flettasam.append(s[j].charAt(i));
                 }
             }
         }
-        System.out.println(ut);
-        return ut;
+        return flettasam.toString();
     }
+
 
 
     //Oppgave 8

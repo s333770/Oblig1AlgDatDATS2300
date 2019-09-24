@@ -575,7 +575,7 @@ public class Oblig1Test {
         }
 
         try {
-            //  s = Oblig1.flett("", "ABC", "");  // kaller metoden
+             s = Oblig1.flett("", "ABC", "");  // kaller metoden
         } catch (Exception e) {
             System.out.println(e);
             System.out.println
@@ -589,7 +589,7 @@ public class Oblig1Test {
             antallFeil++;
         }
 
-        //  s = Oblig1.flett("AM ", "L", "GEDS", "ORATKRR", "", "R TRTE", "IO", "TGAUU");
+         s = Oblig1.flett("AM ", "L", "GEDS", "ORATKRR", "", "R TRTE", "IO", "TGAUU");
 
         if (s.compareTo("ALGORITMER OG DATASTRUKTURER") != 0) {
             System.out.println
@@ -597,7 +597,7 @@ public class Oblig1Test {
             antallFeil++;
         }
 
-        //  s = Oblig1.flett("AFK", "BGLP", "CHMQT", "DINRUW", "EJOSVXY");
+         s = Oblig1.flett("AFK", "BGLP", "CHMQT", "DINRUW", "EJOSVXY");
 
         if (s.compareTo("ABCDEFGHIJKLMNOPQRSTUVWXY") != 0) {
             System.out.println

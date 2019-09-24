@@ -107,74 +107,57 @@ public class Oblig1 {
         return antall;
 
     }
-   /* //Oppgave 4
+    //Oppgave 4
     public static int[] delsortering(int[] a) {
-
         //Gjør først oppdeling av par og oddetall
         int start = 0, slutt = a.length - 1;
         int oddetallTeller = 0;
         for (int i = 0; i < a.length; i++) {
-            if (a[i] % 2 == 1) {
+            if (a[i] % 2 != 0) {
                 oddetallTeller++;
             }
         }
-        while (start < slutt) {
-            while (a[start] % 2 == 1) {
-                start++;
+        int bareOddetall = 0;
+        int barePartall = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 2 != 0) {
+                bareOddetall++;
+            } else if ((a[i] % 2 == 0)) {
+                barePartall++;
             }
-            while (a[slutt] % 2 == 0) {
-                slutt--;
+        }
+        if (bareOddetall != 0 && barePartall==0) {
+            System.out.println("Hei");
+            //KJør kvikksort
+        } else if (barePartall != 0 && barePartall==0) {
+            System.out.println("Hallo");
+            //Kjør kvikksortsou
+        } else {
+            while (start < slutt) {
+                while (a[start] % 2 != 0) {
+                    start++;
+                }
+                while (a[slutt] % 2 == 0) {
+                    slutt--;
+                }
+                if (start < slutt) {
+                    int temp = a[start];
+                    a[start] = a[slutt];
+                    a[slutt] = temp;
+                    start++;
+                    slutt--;
+                }
             }
-            if (start < slutt) {
-                int temp = a[start];
-                a[start] = a[slutt];
-                a[slutt] = temp;
-                start++;
-                slutt--;
-            }
+
         }
         System.out.println(Arrays.toString(a));
-
-        for (int i = 0; i < oddetallTeller - 1; i++) {
-            for (int j = 0; j < oddetallTeller - i -1; j++) {
-                if (a[j] > a[j + 1]) {
-                    int temp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = temp;
-                }
-            }
-        }
-        for(int x=oddetallTeller; x<a.length;x++){
-            for(int y=oddetallTeller; y<a.length-1;y++){
-                if (a[y] > a[y + 1]) {
-                    int temp = a[y];
-                    a[y] = a[y + 1];
-                    a[y + 1] = temp;
-                }
-            }
-        }
         System.out.println(oddetallTeller);
-        System.out.println(Arrays.toString(a));
         return a;
-    }*/
-
-    private static int parter0(int[] a, int v, int h, int skilleverdi)
-    {
-        while (true)                                  // stopper når v > h
-        {
-            while (v <= h && a[v] < skilleverdi) v++;   // h er stoppverdi for v
-            while (v <= h && a[h] >= skilleverdi) h--;  // v er stoppverdi for h
-
-            if (v < h) bytt(a,v++,h--);                 // bytter om a[v] og a[h]
-            else  return v;  // a[v] er nåden første som ikke er mindre enn skilleverdi
-        }
     }
 
-    public static int [] delsortering (int [] a){
 
-        int start = 0;
 
-   }
+
 
     //Oppgave 5
     public static void rotasjon(char[] a){
@@ -369,5 +352,14 @@ public class Oblig1 {
             }
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        int []a ={5,6,4,-5,-4,3,5,2,7,8,3,1,4,-9};
+        int []b={2,4,6,8,10};
+        System.out.println(Arrays.toString(a));
+        delsortering(a);
+
+        System.out.println(Arrays.toString(a));
     }
 }

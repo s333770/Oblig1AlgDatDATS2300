@@ -183,7 +183,7 @@ public class Oblig1 {
             a[i] = a[i-k];
         }
         System.arraycopy(b,0,a,0,k);
-    }   //////sjekk effektiviteten her
+    }
 
     public static int gcd (int a, int b){
         return b == 0 ? a: gcd(b,a%b);
@@ -213,8 +213,8 @@ public class Oblig1 {
         }
     }
 
-    //Oppgave 7a
-    public static String sorter (String inputString ){
+
+/*    public static String sorter (String inputString ){
         //konverter input string fra flett metoden alfabetisk
         char tempArray [] = inputString.toCharArray();
 
@@ -224,12 +224,15 @@ public class Oblig1 {
         //returnerer den sorterte stringen
         return new String (tempArray);
     }
+    */
 
+/*
     public static String flett(String s, String t) {
         String output = "";
-        if (s.length() <= 0 || t.length() <= 0) {
-            throw new IllegalArgumentException("En av strengene er tomme");
+        if(s.length()<=0 &&t.length()<=0){
+            output="";
         }
+
         for (int i = 0; i < s.length() || i < t.length(); i++) {
             if (i < s.length()) {
                 output += String.valueOf(s.charAt(i));
@@ -241,8 +244,9 @@ public class Oblig1 {
         System.out.println(output);
         return output;
     }
+    */
     //Oppgave 7B
-    public static String flettEnString(String[] s) { // Ingen eller flere elementer
+    public static String flett(String... s) { // Ingen eller flere  //
         String ut = "";
         int[] arr = new int[s.length];
         for (int i = 0; i < s.length; i++) {
@@ -278,11 +282,14 @@ public class Oblig1 {
     public static int[] tredjeMin(int[] a) // ny versjon  {3,1,5,5,3,7,6,9,10};
     {
         int minverdi=Integer.MAX_VALUE;
-        int nestMinverdi=Integer.MAX_VALUE;
-        int tredjeMinverdi=Integer.MAX_VALUE;
-        int[] returTabell = new int[3];
+        int nestMinverdi=Integer.MAX_VALUE-1;
+        int tredjeMinverdi=Integer.MAX_VALUE-2;
+        int minIndex=0;
+        int nmIndex=1;
+        int tmINdex=2;
+        int[] tabell = new int[3];
         if (a.length < 3) {
-            throw new IndexOutOfBoundsException("For liten array");
+            throw new NoSuchElementException("For liten array");
         }
         if(a[2]<a[1] && a[2]<a[0]&&a[1]<a[0]){ //a2 a1 a0
             minverdi=a[2];
@@ -315,7 +322,7 @@ public class Oblig1 {
             nestMinverdi=a[2];
             tredjeMinverdi=a[1];
         }
-        System.out.println(Arrays.toString(returTabell));
+
         for(int i=3; i<a.length;i++){
             if(a[i]<tredjeMinverdi){
                 if(a[i]<nestMinverdi){
@@ -330,25 +337,33 @@ public class Oblig1 {
             }
 
         }
-        returTabell[0]=minverdi;
-        returTabell[1]=nestMinverdi;
-        returTabell[2]=tredjeMinverdi;
+        tabell[0]=minverdi;
+        tabell[1]=nestMinverdi;
+        tabell[2]=tredjeMinverdi;
+        System.out.println(Arrays.toString(tabell));
 
-        return returTabell;
+        return tabell;
     }
 
 
 //Oppgave 10
-    public static boolean inneholdt(String s1,String s2){
-        char [] karakterer1=s1.toCharArray();
-        for(int i=0; i<s1.length(); i++){
-            char k= s1.charAt(i);
-            if(s2.indexOf(k)==-1){//Retunerer indeksen til tallet, hvis tallet ikke eksisterer returner -1
+    public static boolean inneholdt(String a,String b) {
+        int []delStreng =new int[1000]; // Lager store tabeller for og holde verdier
+        int []hovedStreng=new int [1000]; // Lager store tabeller for å holde verdier
+
+        for(char c: a.toCharArray()){
+            delStreng[c]++; }
+        for(char c:b.toCharArray()){
+            hovedStreng[c]++;
+    }
+    for(int i=0;i<delStreng.length;i++) {
+            if (hovedStreng[i] < delStreng[i]) {
                 return false;
             }
         }
-        return true;
+    return true;
     }
+    //Se litt mer på denne før innlevering
 
 
     //Hjelpemetoder fra boken
@@ -395,9 +410,10 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-        int []b ={1,2,4,3,5,6};
-        System.out.println(Arrays.toString(b));
-        delsortering(b);
+     int a[]={2, 10, 3, 8, 4, 7, 9, 5, 1, 6};
+       tredjeMin(a);
+
+
 
     }
 }

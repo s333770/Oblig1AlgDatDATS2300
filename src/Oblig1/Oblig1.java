@@ -107,7 +107,7 @@ public class Oblig1 {
         return antall;
 
     }
-    //Oppgave 4
+   /* //Oppgave 4
     public static int[] delsortering(int[] a) {
 
         //Gjør først oppdeling av par og oddetall
@@ -156,7 +156,26 @@ public class Oblig1 {
         System.out.println(oddetallTeller);
         System.out.println(Arrays.toString(a));
         return a;
+    }*/
+
+    private static int parter0(int[] a, int v, int h, int skilleverdi)
+    {
+        while (true)                                  // stopper når v > h
+        {
+            while (v <= h && a[v] < skilleverdi) v++;   // h er stoppverdi for v
+            while (v <= h && a[h] >= skilleverdi) h--;  // v er stoppverdi for h
+
+            if (v < h) bytt(a,v++,h--);                 // bytter om a[v] og a[h]
+            else  return v;  // a[v] er nåden første som ikke er mindre enn skilleverdi
+        }
     }
+
+    public static int [] delsortering (int [] a){
+
+        int start = 0;
+
+   }
+
     //Oppgave 5
     public static void rotasjon(char[] a){
 

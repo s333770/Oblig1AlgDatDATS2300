@@ -91,7 +91,7 @@ public class Oblig1 {
     }
 
     // Oppgave 3
-    public static int antallUlikeUsortert3(int[] a){
+    public static int antallUlikeUsortert(int[] a){
         if(a.length < 1) {
             return 0;
         }

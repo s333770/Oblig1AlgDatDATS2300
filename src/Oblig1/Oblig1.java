@@ -286,61 +286,75 @@ public class Oblig1 {
         int tredjeMinverdi=Integer.MAX_VALUE-2;
         int minIndex=0;
         int nmIndex=1;
-        int tmINdex=2;
+        int tmIndex=2;
         int[] tabell = new int[3];
         if (a.length < 3) {
             throw new NoSuchElementException("For liten array");
         }
+
         if(a[2]<a[1] && a[2]<a[0]&&a[1]<a[0]){ //a2 a1 a0
-            minverdi=a[2];
-            nestMinverdi=a[1];
-            tredjeMinverdi=a[0];
+            minIndex=2;
+            nmIndex=1;
+            tmIndex=0;
         }
         else if(a[2]<a[1]&&a[2]<a[0]&&a[1]>a[0]){ //a2 a0 a1
-            minverdi=a[2];
-            nestMinverdi=a[0];
-            tredjeMinverdi=a[1];
+            minIndex=2;
+            nmIndex=0;
+            tmIndex=1;
         }
         else if(a[2]>a[1] && a[1]<a[0] && a[2]<a[0]){ // a1 a2 a0
-            minverdi=a[1];
-            nestMinverdi=a[2];
-            tredjeMinverdi=a[0];
+            minIndex=1;
+            nmIndex=2;
+            tmIndex=0;
 
         }
         else if(a[2]>a[1] && a[1]<a[0] && a[0]<a[2]){ //a1 a0 a2
-            minverdi=a[1];
-            nestMinverdi=a[0];
-            tredjeMinverdi=a[2];
+            minIndex=1;
+            nmIndex=0;
+            tmIndex=2;
         }
         else if(a[2]>a[1] && a[1]>a[0] && a[0]<a[2]){ //a0 a1 a2
-            minverdi=a[0];
-            nestMinverdi=a[1];
-            tredjeMinverdi=a[2];
+            minIndex=0;
+            nmIndex=1;
+            tmIndex=2;
         }
         else if(a[2]<a[1] && a[1]>a[0] && a[0]<a[2]){ //a0 a2 a1
-            minverdi=a[0];
-            nestMinverdi=a[2];
-            tredjeMinverdi=a[1];
+            minIndex=0;
+            nmIndex=2;
+            tmIndex=1;
         }
+        minverdi=a[minIndex];
+        nestMinverdi=a[nmIndex];
+        tredjeMinverdi=a[tmIndex];
+
 
         for(int i=3; i<a.length;i++){
-            if(a[i]<tredjeMinverdi){
-                if(a[i]<nestMinverdi){
-                    if(a[i]<minverdi){
-                        tredjeMinverdi=nestMinverdi;
-                        nestMinverdi=minverdi;
-                        minverdi=a[i];
-                    }
-
-                }
-
+            if(a[i]<minverdi){
+                tredjeMinverdi=nestMinverdi;
+                nestMinverdi=minverdi;
+                minverdi=a[i];
+                tmIndex=nmIndex;
+                nmIndex=minIndex;
+                minIndex=i;
+            }
+            if(a[i]<nestMinverdi&&a[i]>minverdi){
+                tredjeMinverdi=nestMinverdi;
+                nestMinverdi=a[i];
+                tmIndex=nmIndex;
+                nmIndex=i;
+            }
+            if(a[i]<tredjeMinverdi && a[i]>nestMinverdi){
+                tredjeMinverdi=a[i];
+                tmIndex=i;
             }
 
+
+
         }
-        tabell[0]=minverdi;
-        tabell[1]=nestMinverdi;
-        tabell[2]=tredjeMinverdi;
-        System.out.println(Arrays.toString(tabell));
+        tabell[0]=minIndex;
+        tabell[1]=nmIndex;
+        tabell[2]=tmIndex;
+
 
         return tabell;
     }

@@ -264,19 +264,29 @@ public class Oblig1 {
 
     //Oppgave 8
     public static int[] indekssortering(int[] a) {
-        int[] indexer = new int[a.length];
-        for (int i = 1; i < a.length; i++) {
-            int j = i;
-            for (; j >= 1 && a[j] < a[j - 1]; j--) {
-                int temp = a[j];
-                a[j] = a[j - 1];
-                indexer[j] = indexer[j - 1];
-                a[j - 1] = temp;
+            int[] arr=a.clone();
+            int[]index;
+            if(a.length==0){
+                index = new int[0];
+                return index;
             }
-            indexer[j] = i;
+            else{
+                index = new int[arr.length];
+            }
+            index[0] = 0;
+            for(int i=1;i<arr.length;i++){
+                int j=i;
+                for(;j>=1 && arr[j]<arr[j-1];j--){
+                    int temp = arr[j];
+                    arr[j] = arr[j-1];
+                    index[j]=index[j-1];
+                    arr[j-1] = temp;
+                }
+                index[j]=i;
+            }
+            return index;//indices of sorted elements
         }
-        return indexer;
-    }
+
 
     //Oppgave9
     public static int[] tredjeMin(int[] a) // ny versjon  {3,1,5,5,3,7,6,9,10};
@@ -347,9 +357,6 @@ public class Oblig1 {
                 tredjeMinverdi=a[i];
                 tmIndex=i;
             }
-
-
-
         }
         tabell[0]=minIndex;
         tabell[1]=nmIndex;
@@ -424,9 +431,9 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-     int a[]={2, 10, 3, 8, 4, 7, 9, 5, 1, 6};
-       tredjeMin(a);
-
+     int a[]={5, 2, 8, 3, 5, 10, 7, 5, 2, 10, 6};
+    indekssortering(a);
+        System.out.println(Arrays.toString(indekssortering(a)));
 
 
     }

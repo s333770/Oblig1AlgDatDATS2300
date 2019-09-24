@@ -28,10 +28,6 @@ public class Oblig1 {
         return a;
     }
 
-    public static void bytt(int[] a, int i, int j)
-    {
-        int temp = a[i]; a[i] = a[j]; a[j] = temp;
-    }
 
     // Oppgave 1
     public static int maks(int[] a) {
@@ -127,11 +123,9 @@ public class Oblig1 {
             }
         }
         if (bareOddetall != 0 && barePartall==0) {
-            System.out.println("Hei");
-            //KJør kvikksort
+            kvikksortering0(a,0,a.length-1);
         } else if (barePartall != 0 && barePartall==0) {
-            System.out.println("Hallo");
-            //Kjør kvikksortsou
+            kvikksortering0(a,0,a.length-1);
         } else {
             while (start < slutt) {
                 while (a[start] % 2 != 0) {
@@ -148,10 +142,13 @@ public class Oblig1 {
                     slutt--;
                 }
             }
-
+            System.out.println(oddetallTeller);
+            System.out.println(Arrays.toString(a));
+            kvikksortering0(a,0,oddetallTeller-1);
+            kvikksortering0(a,oddetallTeller,a.length-1);
+            System.out.println(Arrays.toString(a));
         }
-        System.out.println(Arrays.toString(a));
-        System.out.println(oddetallTeller);
+
         return a;
     }
 
@@ -354,12 +351,55 @@ public class Oblig1 {
         return true;
     }
 
+
+    //Hjelpemetoder fra boken
+    private static void kvikksortering0(int[] a, int v, int h)  // en privat metode
+    {
+        if (v >= h) return;  // a[v:h] er tomt eller har maks ett element
+        int k = sParter0(a, v, h, (v + h)/2);  // bruker midtverdien
+        kvikksortering0(a, v, k - 1);     // sorterer intervallet a[v:k-1]
+        kvikksortering0(a, k + 1, h);     // sorterer intervallet a[k+1:h]
+    }
+
+    private static int sParter0(int[] a, int v, int h, int indeks)
+    {
+        bytt(a, indeks, h);           // skilleverdi a[indeks] flyttes bakerst
+        int pos = parter0(a, v, h - 1, a[h]);  // partisjonerer a[v:h - 1]
+        bytt(a, pos, h);              // bytter for å få skilleverdien på rett plass
+        return pos;                   // returnerer posisjonen til skilleverdien
+    }
+    private static int parter0(int[] a, int v, int h, int skilleverdi)
+    {
+        while (true)                                  // stopper når v > h
+        {
+            while (v <= h && a[v] < skilleverdi) v++;   // h er stoppverdi for v
+            while (v <= h && a[h] >= skilleverdi) h--;  // v er stoppverdi for h
+
+            if (v < h) bytt(a,v++,h--);                 // bytter om a[v] og a[h]
+            else  return v;  // a[v] er nåden første som ikke er mindre enn skilleverdi
+        }
+    }
+    public static void bytt(int[] a, int i, int j)
+    {
+        int temp = a[i]; a[i] = a[j]; a[j] = temp;
+    }
+    public static int[] concatenate(int[] a, int[] b)
+    {
+        int[] arr = new int[a.length + b.length];
+
+        System.arraycopy(a, 0, arr, 0, a.length);
+        System.arraycopy(b, 0, arr, b.length, b.length);
+
+        return arr;
+    }
+
+
+
     public static void main(String[] args) {
-        int []a ={5,6,4,-5,-4,3,5,2,7,8,3,1,4,-9};
+        int []a ={5,6,4,-5,-4,3,};
         int []b={2,4,6,8,10};
         System.out.println(Arrays.toString(a));
         delsortering(a);
 
-        System.out.println(Arrays.toString(a));
     }
 }

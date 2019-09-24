@@ -417,14 +417,4 @@ public class Oblig1 {
         System.out.println(Arrays.toString(a));
         return a;
     }
-
-
-
-    public static void main(String[] args) {
-     int a[]={5, 2, 8, 3, 5, 10, 7, 5, 2, 10, 6};
-    indekssortering(a);
-        System.out.println(Arrays.toString(indekssortering(a)));
-
-
-    }
 }

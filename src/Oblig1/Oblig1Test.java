@@ -560,7 +560,7 @@ public class Oblig1Test {
         String[] a = {};
 
         try {
-            //    s = Oblig1.flett(a);  // kaller metoden
+                s = Oblig1.flett(a);  // kaller metoden
         } catch (Exception e) {
             System.out.println(e);
             System.out.println

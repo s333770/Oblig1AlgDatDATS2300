@@ -215,35 +215,24 @@ public class Oblig1 {
     }
 
     //Oppgave 7a
-    public static String sorter (String inputString ){
-        //konverter input string fra flett metoden alfabetisk
-        char tempArray [] = inputString.toCharArray();
+    public static String flett(String s, String t)
+    {
 
-        //sorterer tempArray
-        Arrays.sort(tempArray);
+        StringBuilder result = new StringBuilder();
 
-        //returnerer den sorterte stringen
-        return new String (tempArray);
-    }
-
-    public static String flett(String s, String t) {
-        String output = "";
-        if (s.length() <= 0 || t.length() <= 0) {
-            throw new IllegalArgumentException("En av strengene er tomme");
-        }
         for (int i = 0; i < s.length() || i < t.length(); i++) {
-            if (i < s.length()) {
-                output += String.valueOf(s.charAt(i));
-            }
-            if (i < t.length()) {
-                output += String.valueOf(t.charAt(i));
-            }
+
+            if (i < s.length())
+                result.append(s.charAt(i));
+
+            if (i < t.length())
+                result.append(t.charAt(i));
         }
-        System.out.println(output);
-        return output;
+
+        return result.toString();
     }
     //Oppgave 7B
-    public static String flettEnString(String[] s) { // Ingen eller flere elementer
+    public static String flettEnString(String... s) { // Ingen eller flere elementer
         String ut = "";
         int[] arr = new int[s.length];
         for (int i = 0; i < s.length; i++) {
